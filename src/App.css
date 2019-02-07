@@ -1,0 +1,63 @@
+/* All */
+
+body {
+	text-align: center;
+	background-color: rgb(44, 44, 44);
+}
+
+.container {
+	background-color: darkgrey;
+	padding: 0;
+	border-radius: 2%;
+	width: 100%;
+}
+
+.navButtons {
+	margin: 2rem;
+}
+
+.jumbotron {
+	background-image: url("/images/real_cf.png");
+	margin: 0;
+	border-radius: 0;
+}
+
+.headertext {
+	margin: 2rem;
+	color: rgb(190, 190, 190);
+}
+
+/* Home */
+
+#message {
+	padding: 5rem 2rem;
+	font-style: italic;
+}
+
+.toStore {
+	width: 100%;
+	border-radius: 0;
+	font-size: 1.3rem;
+}
+
+/* shop */
+
+.shopbttns {
+	border-radius: 0;
+}
+
+.card {
+	width: 18rem;
+	background-color: rgb(190, 190, 190);
+	margin: .5rem;
+}
+
+.card-img-top {
+	max-height: 12rem;
+}
+
+/* About */
+
+#location {
+	height: 20rem;
+}
