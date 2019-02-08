@@ -43,7 +43,7 @@ class Shop extends Component {
 
 	removeFromCart = (itemname, itemprice) => {
 		let foundItem = this.state.cart.findIndex((item) => item.item.name === itemname)
-		let newCart = this.state.cart.filter(function(item, index) {
+		let newCart = this.state.cart.filter((item, index) => {
 			return foundItem !== index
 		})
 		this.setState(
@@ -61,11 +61,11 @@ class Shop extends Component {
 		return (
 			<div className="container">
 				<div className="shopbttns">
-					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/Nissan'}>
-						Nissan Motors
-					</Link>
 					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/Toyota'}>
 						Toyota Motors
+					</Link>
+					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/Nissan'}>
+						Nissan Motors
 					</Link>
 				</div>
 

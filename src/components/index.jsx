@@ -1,6 +1,7 @@
-import Shop from './Shop'
-import Home from './Home'
+import Header from './Header'
 import Navbar from './Navbar'
+import Home from './Home'
+import Shop from './Shop'
 import About from './About'
 
-export { Shop, Home, Navbar, About }
+export { Header, Navbar, Home, Shop, About }

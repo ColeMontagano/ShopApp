@@ -85,12 +85,7 @@ class Navbar extends Component {
 
 	render() {
 		return (
-			<div>
-				<div className="jumbotron">
-					<h1 className="headertext">JDM Import Motors</h1>
-					<h4 className="headertext">Your #1 JDM Motor Supplier</h4>
-				</div>
-
+			<div className="sticky-top">
 				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 					<Link className="navbar-brand" to="/">
 						Home
@@ -102,6 +97,8 @@ class Navbar extends Component {
 								Shop
 							</Link>
 						</li>
+					</ul>
+					<ul className="navbar-nav">
 						<li className="nav-item">
 							<Link className="nav-link" to="/about">
 								About Us
