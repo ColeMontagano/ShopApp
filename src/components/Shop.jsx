@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
 import axios from 'axios'
 import '../App.css'
+import Product from './Product'
 
 class Shop extends Component {
 	state = {
@@ -22,12 +23,14 @@ class Shop extends Component {
 		})
 	}
 
-	addToCart = (itemname, itemprice, itemimg, itemdescription) => {
+	addToCart = (itemname, itemmake, itemprice, itemimg, itemdescription, itemid) => {
 		let item = {
 			name        : itemname,
+			make        : itemmake,
 			price       : itemprice,
 			img         : itemimg,
 			description : itemdescription,
+			id          : itemid,
 			inCart      : true
 		}
 		this.setState(
@@ -61,32 +64,40 @@ class Shop extends Component {
 		return (
 			<div className="container">
 				<div className="shopbttns">
-					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/Toyota'}>
+					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/toyota'}>
 						Toyota Motors
 					</Link>
-					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/Nissan'}>
+					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/nissan'}>
 						Nissan Motors
 					</Link>
 				</div>
 
 				<Switch>
 					<Route
-						path={this.props.match.path + '/Nissan'}
+						path={'/shop/:make/:id'}
+						render={(renderProps) => <Product addToCart={this.addToCart} renderProps={renderProps} />}
+					/>
+					<Route
+						path={this.props.match.path + '/nissan'}
 						render={() => (
 							<Nissan
 								nissan={this.state.shop.nissan}
 								addToCart={this.addToCart}
 								loading={this.state.loading}
+								toProductPage={this.toProductPage}
+								url={this.props.match.path + '/nissan'}
 							/>
 						)}
 					/>
 					<Route
-						path={this.props.match.path + '/Toyota'}
+						path={this.props.match.path + '/toyota'}
 						render={() => (
 							<Toyota
 								toyota={this.state.shop.toyota}
 								addToCart={this.addToCart}
 								loading={this.state.loading}
+								toProductPage={this.toProductPage}
+								url={this.props.match.path + '/toyota'}
 							/>
 						)}
 					/>
@@ -105,13 +116,14 @@ class Shop extends Component {
 }
 
 const Nissan = (props) => {
+	console.log(props)
 	return (
 		<div>
 			{!props.loading &&
 				props.nissan.map((nissan, i) => {
 					return (
 						<div key={i} style={{ display: 'inline-block' }}>
-							<ItemCard item={nissan} addToCart={props.addToCart} />
+							<ItemCard item={nissan} addToCart={props.addToCart} url={props.url} />
 						</div>
 					)
 				})}
@@ -127,7 +139,7 @@ const Toyota = (props) => {
 				props.toyota.map((toyota, i) => {
 					return (
 						<div key={i} style={{ display: 'inline-block' }}>
-							<ItemCard item={toyota} addToCart={props.addToCart} />
+							<ItemCard item={toyota} addToCart={props.addToCart} url={props.url} />
 						</div>
 					)
 				})}
@@ -137,40 +149,40 @@ const Toyota = (props) => {
 }
 
 const ItemCard = (props) => {
+	let item = props.item
+	console.log(item.make)
 	return (
 		<div className="card">
-			<img className="card-img-top" src={props.item.img} alt="Motor" />
+			<Link to={{ pathname: `/shop/${item.make}/${item.id}`, state: { item: item } }}>
+				<img className="card-img-top" src={item.img} alt="Motor" />
+			</Link>
 			<div className="card-body">
-				<h5 className="card-title">{props.item.name}</h5>
-				<p className="card-text">{props.item.description}</p>
-				<p className="card-text">${props.item.price}</p>
+				<h5 className="card-title">
+					{item.name} {item.make}{' '}
+				</h5>
+				<p className="card-text">{item.description}</p>
+				<p className="card-text">${item.price}</p>
 				<button
 					style={{
 						display :
-							props.item.inCart ? 'none' :
+							item.inCart ? 'none' :
 							'inline'
 					}}
 					className="btn btn-dark"
 					onClick={() => {
-						props.addToCart(
-							props.item.name,
-							props.item.price,
-							props.item.img,
-							props.item.description,
-							props.item.inCart
-						)
+						props.addToCart(item.name, item.make, item.price, item.img, item.description, item.id)
 					}}>
 					Add To Cart
 				</button>
 				<button
 					style={{
 						display :
-							props.item.inCart ? 'inline' :
+							item.inCart ? 'inline' :
 							'none'
 					}}
 					className="btn btn-dark"
 					onClick={() => {
-						props.removeFromCart(props.item.name, props.item.price)
+						props.removeFromCart(item.name, item.price)
 					}}>
 					Remove
 				</button>
