@@ -37,20 +37,49 @@ class Product extends Component {
 		let item = this.state.item
 		return (
 			<div className="container">
-				<h1>{this.state.item.name}</h1>
-				<img className="itemImage" src={this.state.item.img} />
-				<h4>Specs: </h4>
-				<p>Horsepower: {item.hp} </p>
-				<p>Torque: {item.tq} </p>
-				<p>Displacement: {item.dp}cc </p>
-				<p>Price: ${item.price} </p>
-				<button
-					className="btn btn-dark"
-					onClick={() => {
-						this.props.addToCart(item.name, item.make, item.price, item.img, item.description, item.id)
-					}}>
-					Add To Cart
-				</button>
+				<div className="productBody">
+					<h1 id="headerText">{this.state.item.name}</h1>
+					<div className="row">
+						<div className="col-md-6 col-sm-12 container-fluid">
+							<img className="itemImage" src={this.state.item.img} />
+						</div>
+						<div className="col-md-6 col-sm-12 specList">
+							<h4>Specs:</h4>
+							<table>
+								<tbody>
+									<tr className="specItem">
+										<td>Horsepower</td>
+										<td>{item.hp}</td>
+									</tr>
+									<tr className="specItem">
+										<td>Torque</td>
+										<td>{item.tq}</td>
+									</tr>
+									<tr className="specItem">
+										<td>Displacement</td>
+										<td>{item.dp}cc</td>
+									</tr>
+								</tbody>
+							</table>
+							<p>Price: ${item.price} </p>
+
+							<button
+								className="btn btn-dark"
+								onClick={() => {
+									this.props.addToCart(
+										item.name,
+										item.make,
+										item.price,
+										item.img,
+										item.description,
+										item.id
+									)
+								}}>
+								Add To Cart
+							</button>
+						</div>
+					</div>
+				</div>
 				<hr />
 			</div>
 		)

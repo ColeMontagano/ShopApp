@@ -157,9 +157,7 @@ const ItemCard = (props) => {
 				<img className="card-img-top" src={item.img} alt="Motor" />
 			</Link>
 			<div className="card-body">
-				<h5 className="card-title">
-					{item.name} {item.make}{' '}
-				</h5>
+				<h5 className="card-title">{item.name} </h5>
 				<p className="card-text">{item.description}</p>
 				<p className="card-text">${item.price}</p>
 				<button

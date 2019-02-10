@@ -68,7 +68,29 @@ body {
 /* Product */
 
 .itemImage {
-	height: 25rem;
+	max-width: 28rem;
+	height: auto;
+}
+
+.specList {
+	margin-top: 1rem;
+}
+
+table {
+	width: 60%;
+	margin: 2rem auto;
+}
+
+.specItem {
+	height: 2.5rem;
+}
+
+.productBody {
+	margin-top: 2rem;
+}
+
+#headerText {
+	margin: 3rem;
 }
 
 /* About */
