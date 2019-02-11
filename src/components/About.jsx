@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Mapbox from './Mapbox'
 import '../../src/App.css'
 
 class About extends Component {
@@ -6,13 +7,12 @@ class About extends Component {
 		return (
 			<div className="container">
 				<h1 className="headerText">The Team</h1>
-				<div className="row">
-					<div className="col-2" />
-					<div className="col-4">
+				<div className="row bio">
+					<div className="col-12 col-md-6">
 						<h4>Bill</h4>
 						<h2>Picture</h2>
 					</div>
-					<div className="col-4">
+					<div className="col-12 col-md-6">
 						<h3>A Word From Bill</h3>
 						<p>
 							Ut dignissim cursus nisl, faucibus dignissim enim sodales at. Quisque aliquet orci quis enim
@@ -26,13 +26,14 @@ class About extends Component {
 
 				<h3>Where To Find Us</h3>
 				<br />
-				<div className="row" id="location">
-					<div className="col-3" />
-					<div className="col-4">Map</div>
-					<div className="col-4">
-						<p>3829 Hilly Dr</p>
-						<p>North Ouitura, PA</p>
-						<p>72940</p>
+				<div className="row">
+					<div className="col-12 col-md-6">
+						<h4>123 Thomas St</h4>
+						<h4>Monroeville, PA</h4>
+						<h4>81267</h4>
+					</div>
+					<div className="col-12 col-md-6 Map">
+						<Mapbox />
 					</div>
 				</div>
 			</div>
