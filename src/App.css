@@ -12,6 +12,10 @@ body {
 	width: 100%;
 }
 
+.headerText {
+	padding: 2rem;
+}
+
 /* Header */
 .jumbotron {
 	background-image: url("/images/real_cf.png");
@@ -20,7 +24,7 @@ body {
 }
 
 .headertext {
-	margin: 2rem;
+	margin: .5rem;
 	color: rgb(190, 190, 190);
 }
 
@@ -44,13 +48,17 @@ body {
 	font-style: italic;
 }
 
-.toStore {
+.wideButton {
 	width: 100%;
 	border-radius: 0;
 	font-size: 1.3rem;
 }
 
 /* Shop */
+.productList {
+	margin: 2rem 0;
+}
+
 .shopbttns {
 	border-radius: 0;
 }
@@ -83,14 +91,6 @@ table {
 
 .specItem {
 	height: 2.5rem;
-}
-
-.productBody {
-	margin-top: 2rem;
-}
-
-#headerText {
-	margin: 3rem;
 }
 
 /* About */

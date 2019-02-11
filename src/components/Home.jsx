@@ -18,7 +18,7 @@ class Home extends Component {
 						ullamcorper. <br /> - JDM Import Motors
 					</p>
 				</div>
-				<Link to={'/shop'} className="btn btn-dark toStore">
+				<Link to={'/shop'} className="btn btn-dark wideButton">
 					Continue To The Store
 				</Link>
 			</div>

@@ -118,7 +118,7 @@ class Shop extends Component {
 const Nissan = (props) => {
 	console.log(props)
 	return (
-		<div>
+		<div className="productList">
 			{!props.loading &&
 				props.nissan.map((nissan, i) => {
 					return (
@@ -127,14 +127,13 @@ const Nissan = (props) => {
 						</div>
 					)
 				})}
-			<hr />
 		</div>
 	)
 }
 
 const Toyota = (props) => {
 	return (
-		<div className="">
+		<div className="productList">
 			{!props.loading &&
 				props.toyota.map((toyota, i) => {
 					return (
@@ -143,7 +142,6 @@ const Toyota = (props) => {
 						</div>
 					)
 				})}
-			<hr />
 		</div>
 	)
 }
@@ -190,19 +188,38 @@ const ItemCard = (props) => {
 }
 
 class Cart extends Component {
+	state = {
+		cartOpen : false
+	}
+
+	toggleCart = () => {
+		this.setState({
+			cartOpen : !this.state.cartOpen
+		})
+	}
 	render() {
 		return (
 			<div>
-				<h1>Shopping Cart</h1>
-				{!this.props.loading &&
-					this.props.cart.map((item, i) => {
-						return (
-							<div key={i} style={{ display: 'inline-block' }}>
-								<ItemCard item={item.item} removeFromCart={this.props.removeFromCart} />
-							</div>
-						)
-					})}
-				{<h5>Cart Total: {this.props.cartTotal}</h5>}
+				<button className="btn btn-dark wideButton" onClick={this.toggleCart}>
+					{
+						this.state.cartOpen ? 'Close Cart' :
+						'Open Cart'}
+				</button>
+
+				{this.state.cartOpen && (
+					<div>
+						<h1>Shopping Cart</h1>
+						{!this.props.loading &&
+							this.props.cart.map((item, i) => {
+								return (
+									<div key={i} style={{ display: 'inline-block' }}>
+										<ItemCard item={item.item} removeFromCart={this.props.removeFromCart} />
+									</div>
+								)
+							})}
+						{<h5>Cart Total: {this.props.cartTotal}</h5>}
+					</div>
+				)}
 			</div>
 		)
 	}
