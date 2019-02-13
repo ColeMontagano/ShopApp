@@ -12,6 +12,16 @@ body {
 	width: 100%;
 }
 
+div.noPadding {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+div.noMargin {
+	margin-left: 0;
+	margin-right: 0;
+}
+
 .headerText {
 	padding: 2rem;
 }
@@ -24,22 +34,21 @@ body {
 }
 
 .headertext {
+	text-align: center;
 	margin: .5rem;
 	color: rgb(190, 190, 190);
 }
 
 /* Navbar */
-.navbar {
-	position: sticky;
-}
 
-.navButtons {
-	margin: 2rem;
-	display: inline;
+.navLinks {
+	text-decoration: none;
+	color: white;
+	margin: .4rem;
 }
-
-.navbar-nav {
-	display: inline;
+.navLinks:hover {
+	text-decoration: none;
+	color: grey;
 }
 
 /* Home */
@@ -60,7 +69,7 @@ body {
 }
 
 .shopbttns {
-	border-radius: 0;
+	width: 100%;
 }
 
 .card {

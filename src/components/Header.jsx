@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import '../../src/App.css'
+import { Jumbotron } from 'reactstrap'
 
 class Header extends Component {
 	render() {
 		return (
-			<div className="jumbotron">
+			<Jumbotron>
 				<h1 className="headertext">JDM Import Motors</h1>
 				<h4 className="headertext">Your #1 JDM Motor Supplier</h4>
-			</div>
+			</Jumbotron>
 		)
 	}
 }

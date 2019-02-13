@@ -1,12 +1,18 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, Form, Input, Button } from 'reactstrap'
 
-class Navbar extends Component {
-	state = {
-		nameinput : '',
-		name      : '',
-		loggedIn  : false
+class AppNavbar extends Component {
+	constructor(props) {
+		super(props)
+		this.toggle = this.toggle.bind(this)
+		this.state = {
+			nameinput : '',
+			name      : '',
+			loggedIn  : false,
+			isOpen    : false
+		}
 	}
 
 	componentDidMount = () => {
@@ -23,16 +29,16 @@ class Navbar extends Component {
 	retrieveName = () => {
 		if (this.state.loggedIn) {
 			return (
-				<ul className="navbar-nav">
-					<li className="nav-item navbar-brand">Hello {this.state.name}</li>
-					<li className="nav-item">
+				<Nav>
+					<NavbarBrand>Hello {this.state.name}</NavbarBrand>
+					<NavItem>
 						<Link to="/">
-							<button className="btn btn-outline-success mr-sm-12" onClick={this.logOut}>
+							<Button color="outline-success" onClick={this.logOut}>
 								Log Out
-							</button>
+							</Button>
 						</Link>
-					</li>
-				</ul>
+					</NavItem>
+				</Nav>
 			)
 		}
 	}
@@ -40,16 +46,16 @@ class Navbar extends Component {
 	logIn = () => {
 		if (!this.state.loggedIn) {
 			return (
-				<form className="form-inline my-2 my-lg-0" onSubmit={this.addName}>
-					<input
+				<Form className="form-inline my-2 my-lg-0" onSubmit={this.addName}>
+					<Input
 						className="form-control mr-sm-12"
 						onChange={(e) => this.getName(e.target.value)}
 						type="text"
 						placeholder="Name"
 						required
 					/>
-					<button className="btn btn-outline-success my-2 my-sm-0">Sign In</button>
-				</form>
+					<Button color="outline-success">Sign In</Button>
+				</Form>
 			)
 		}
 	}
@@ -83,49 +89,48 @@ class Navbar extends Component {
 		})
 	}
 
+	toggle() {
+		this.setState({
+			isOpen : !this.state.isOpen
+		})
+	}
+
 	render() {
 		return (
 			<div className="sticky-top">
-				<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-					<Link className="navbar-brand" to="/">
-						Home
-					</Link>
-
-					<ul className="navbar-nav">
-						<li className="nav-item">
-							<Link className="nav-link" to="/shop">
+				<Navbar color="dark" dark expand="md">
+					<NavbarBrand>
+						<Link className="navLinks" to="/">
+							Home
+						</Link>
+					</NavbarBrand>
+					<Nav>
+						<NavItem>
+							<Link className="navLinks" to="/shop">
 								Shop
 							</Link>
-						</li>
-					</ul>
-					<ul className="navbar-nav">
-						<li className="nav-item">
-							<Link className="nav-link" to="/about">
+						</NavItem>
+					</Nav>
+					<Nav>
+						<NavItem>
+							<Link className="navLinks" to="/about">
 								About Us
 							</Link>
-						</li>
-					</ul>
-
-					<button
-						className="navbar-toggler"
-						type="button"
-						data-toggle="collapse"
-						data-target="#navbarNav"
-						aria-controls="navbarNav"
-						aria-expanded="false"
-						aria-label="Toggle navigation">
-						<span className="navbar-toggler-icon" />
-					</button>
-					<div className="collapse navbar-collapse" id="navbarNav">
-						<ul className="navbar-nav ml-auto">
-							{this.logIn()}
-							{this.retrieveName()}
-						</ul>
-					</div>
-				</nav>
+						</NavItem>
+					</Nav>
+					<NavbarToggler onClick={this.toggle} />
+					<Collapse isOpen={this.state.isOpen} navbar>
+						<Nav className="ml-auto" navbar>
+							<NavItem>
+								{this.logIn()}
+								{this.retrieveName()}
+							</NavItem>
+						</Nav>
+					</Collapse>
+				</Navbar>
 			</div>
 		)
 	}
 }
 
-export default Navbar
+export default AppNavbar

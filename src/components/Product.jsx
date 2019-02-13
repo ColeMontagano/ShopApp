@@ -40,7 +40,7 @@ class Product extends Component {
 				<h1 className="headerText">{this.state.item.name}</h1>
 				<div className="row">
 					<div className="col-md-6 col-sm-12 container-fluid">
-						<img className="itemImage" src={this.state.item.img} />
+						<img className="itemImage" src={this.state.item.img} alt={this.state.item.name + 'picture'} />
 					</div>
 					<div className="col-md-6 col-sm-12 specList">
 						<h4>Specs:</h4>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import '../../src/App.css'
+import { Container } from 'reactstrap'
 
 class Home extends Component {
 	render() {
 		return (
-			<div className="container">
+			<Container className="noPadding">
 				<div id="message">
 					<h1>A Message to Shoppers</h1>
 					<p>
@@ -21,7 +22,7 @@ class Home extends Component {
 				<Link to={'/shop'} className="btn btn-dark wideButton">
 					Continue To The Store
 				</Link>
-			</div>
+			</Container>
 		)
 	}
 }

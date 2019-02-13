@@ -3,6 +3,7 @@ import { Route, Switch, Link } from 'react-router-dom'
 import axios from 'axios'
 import '../App.css'
 import Product from './Product'
+import { Form, Input, Button, Container, Row, Col } from 'reactstrap'
 
 class Shop extends Component {
 	state = {
@@ -62,15 +63,19 @@ class Shop extends Component {
 
 	render() {
 		return (
-			<div className="container">
-				<div className="shopbttns">
-					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/toyota'}>
-						Toyota Motors
-					</Link>
-					<Link className="btn btn-dark col-6 shopbttns" to={this.props.match.url + '/nissan'}>
-						Nissan Motors
-					</Link>
-				</div>
+			<Container className="noPadding">
+				<Row>
+					<Col xs="6">
+						<Link className="btn btn-dark shopbttns" to={this.props.match.url + '/toyota'}>
+							Toyota Motors
+						</Link>
+					</Col>
+					<Col xs="6">
+						<Link className="btn btn-dark shopbttns" to={this.props.match.url + '/nissan'}>
+							Nissan Motors
+						</Link>
+					</Col>
+				</Row>
 
 				<Switch>
 					<Route
@@ -110,7 +115,7 @@ class Shop extends Component {
 						loading={this.state.loading}
 					/>
 				)}
-			</div>
+			</Container>
 		)
 	}
 }
