@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../../src/App.css'
 import axios from 'axios'
+import { Container, Row, Col, Button, Table } from 'reactstrap'
 
 class Product extends Component {
 	state = {
@@ -36,15 +37,15 @@ class Product extends Component {
 	render() {
 		let item = this.state.item
 		return (
-			<div className="container">
+			<Container>
 				<h1 className="headerText">{this.state.item.name}</h1>
-				<div className="row">
-					<div className="col-md-6 col-sm-12 container-fluid">
+				<Row className="product">
+					<Col sm="12" md="6" className=" container-fluid">
 						<img className="itemImage" src={this.state.item.img} alt={this.state.item.name + 'picture'} />
-					</div>
-					<div className="col-md-6 col-sm-12 specList">
+					</Col>
+					<Col sm="12" md="6" className="specList">
 						<h4>Specs:</h4>
-						<table>
+						<Table>
 							<tbody>
 								<tr className="specItem">
 									<td>Horsepower</td>
@@ -59,11 +60,11 @@ class Product extends Component {
 									<td>{item.dp}cc</td>
 								</tr>
 							</tbody>
-						</table>
+						</Table>
 						<p>Price: ${item.price} </p>
 
-						<button
-							className="btn btn-dark"
+						<Button
+							color="dark"
 							onClick={() => {
 								this.props.addToCart(
 									item.name,
@@ -75,11 +76,10 @@ class Product extends Component {
 								)
 							}}>
 							Add To Cart
-						</button>
-					</div>
-				</div>
-				<hr />
-			</div>
+						</Button>
+					</Col>
+				</Row>
+			</Container>
 		)
 	}
 }

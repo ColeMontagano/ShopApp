@@ -99,11 +99,9 @@ class AppNavbar extends Component {
 		return (
 			<div className="sticky-top">
 				<Navbar color="dark" dark expand="md">
-					<NavbarBrand>
-						<Link className="navLinks" to="/">
-							Home
-						</Link>
-					</NavbarBrand>
+					<Link className="navLinks" to="/">
+						Home
+					</Link>
 					<Nav>
 						<NavItem>
 							<Link className="navLinks" to="/shop">

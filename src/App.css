@@ -1,6 +1,6 @@
 /* All */
 
-body {
+.body {
 	text-align: center;
 	background-color: rgb(44, 44, 44);
 }
@@ -27,7 +27,7 @@ div.noMargin {
 }
 
 /* Header */
-.jumbotron {
+#jumbotron {
 	background-image: url("/images/real_cf.png");
 	margin: 0;
 	border-radius: 0;
@@ -59,13 +59,23 @@ div.noMargin {
 
 .wideButton {
 	width: 100%;
-	border-radius: 0;
 	font-size: 1.3rem;
+	border-radius: 0%;
 }
 
 /* Shop */
+#shopNav {
+	width: 100%;
+	margin: 0;
+}
+
 .productList {
-	margin: 2rem 0;
+	padding: 2rem 0;
+}
+
+#noMargin {
+	margin: 0;
+	padding: 0;
 }
 
 .shopbttns {
@@ -102,13 +112,16 @@ table {
 	height: 2.5rem;
 }
 
+.product {
+	margin: 2rem 0;
+}
+
 /* About */
 .bio {
 	margin: 0 3rem;
 }
 
 /* Mapbox */
-
 .Map {
 	text-align: left;
 	margin-bottom: 2rem;
