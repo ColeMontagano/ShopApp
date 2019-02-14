@@ -141,3 +141,8 @@ table {
 	height: 50px;
 	border-radius: 50%;
 }
+
+/* Carousel */
+.carousel-item img {
+	max-height: 15rem;
+}

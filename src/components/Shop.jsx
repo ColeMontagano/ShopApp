@@ -3,6 +3,7 @@ import { Route, Switch, Link } from 'react-router-dom'
 import axios from 'axios'
 import '../App.css'
 import Product from './Product'
+import ShopCarousel from './Carousel'
 import { Button, Container, Row, Col, Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle } from 'reactstrap'
 
 class Shop extends Component {
@@ -64,6 +65,7 @@ class Shop extends Component {
 	render() {
 		return (
 			<div>
+				{!this.state.loading && <ShopCarousel items={this.state.shop.toyota} />}
 				<Row id="shopNav">
 					<Col id="noMargin" xs="6">
 						<Link className="btn btn-dark wideButton" to={this.props.match.url + '/toyota'}>
@@ -122,7 +124,6 @@ class Shop extends Component {
 }
 
 const Nissan = (props) => {
-	console.log(props)
 	return (
 		<div className="productList">
 			{!props.loading &&
@@ -154,7 +155,6 @@ const Toyota = (props) => {
 
 const ItemCard = (props) => {
 	let item = props.item
-	console.log(item.make)
 	return (
 		<div>
 			<Card>
