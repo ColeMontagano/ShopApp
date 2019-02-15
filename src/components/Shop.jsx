@@ -65,7 +65,7 @@ class Shop extends Component {
 	render() {
 		return (
 			<div>
-				{!this.state.loading && <ShopCarousel items={this.state.shop.toyota} />}
+				{console.log(this.props)}
 				<Row id="shopNav">
 					<Col id="noMargin" xs="6">
 						<Link className="btn btn-dark wideButton" to={this.props.match.url + '/toyota'}>
@@ -78,6 +78,10 @@ class Shop extends Component {
 						</Link>
 					</Col>
 				</Row>
+				{!this.state.loading &&
+				(this.props.location.pathname === '/shop' ||
+					this.props.location.pathname === '/shop/toyota' ||
+					this.props.location.pathname === '/shop/nissan') && <ShopCarousel items={this.state.shop.toyota} />}
 				<Container className="noPadding center">
 					<Switch>
 						<Route
