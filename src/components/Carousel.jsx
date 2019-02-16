@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../App.css'
-import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap'
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap'
 
 class ShopCarousel extends Component {
 	constructor(props) {
@@ -52,7 +52,6 @@ class ShopCarousel extends Component {
 				return (
 					<CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={i}>
 						<img src={item.img} alt={item.name} />
-						<CarouselCaption captionText={item.name} />
 					</CarouselItem>
 				)
 			})

@@ -35,13 +35,13 @@ class Product extends Component {
 			})
 	}
 	render() {
-		let item = this.state.item
+		let { item } = this.state
 		return (
 			<Container>
-				<h1 className="headerText">{this.state.item.name}</h1>
+				<h1 className="headerText">{item.name}</h1>
 				<Row className="product">
 					<Col sm="12" md="6" className=" container-fluid">
-						<img className="itemImage" src={this.state.item.img} alt={this.state.item.name + 'picture'} />
+						<img className="itemImage" src={item.img} alt={item.name + 'picture'} />
 					</Col>
 					<Col sm="12" md="6" className="specList">
 						<h4>Specs:</h4>

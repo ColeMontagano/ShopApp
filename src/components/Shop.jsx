@@ -11,16 +11,19 @@ class Shop extends Component {
 		shop      : [],
 		cart      : [],
 		loading   : true,
-		cartTotal : 0
+		cartTotal : 0,
+		carousel  : []
 	}
 
 	componentDidMount() {
 		axios.get('http://localhost:8080/').then(({ data }) => {
+			console.log(data)
 			this.setState({
 				shop      : data,
 				cart      : data.cart,
 				loading   : false,
-				cartTotal : data.cartTotal
+				cartTotal : data.cartTotal,
+				carousel  : data.carousel
 			})
 		})
 	}
@@ -65,7 +68,7 @@ class Shop extends Component {
 	render() {
 		return (
 			<div>
-				{console.log(this.props)}
+				{console.log(this.state)}
 				<Row id="shopNav">
 					<Col id="noMargin" xs="6">
 						<Link className="btn btn-dark wideButton" to={this.props.match.url + '/toyota'}>
@@ -81,7 +84,7 @@ class Shop extends Component {
 				{!this.state.loading &&
 				(this.props.location.pathname === '/shop' ||
 					this.props.location.pathname === '/shop/toyota' ||
-					this.props.location.pathname === '/shop/nissan') && <ShopCarousel items={this.state.shop.toyota} />}
+					this.props.location.pathname === '/shop/nissan') && <ShopCarousel items={this.state.carousel} />}
 				<Container className="noPadding center">
 					<Switch>
 						<Route
@@ -162,7 +165,7 @@ const ItemCard = (props) => {
 	return (
 		<div>
 			<Card>
-				<Link to={{ pathname: `/shop/${item.make}/${item.id}`, state: { item: item } }}>
+				<Link to={{ pathname: `/shop/${item.make}/${item.id}`, state: { item } }}>
 					<CardImg top src={item.img} alt="Motor" />
 				</Link>
 				<CardBody>

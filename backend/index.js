@@ -121,6 +121,20 @@ shop = {
 			id          : 'vg30dett'
 		}
 	],
+	carousel  : [
+		{
+			name : 'Supra',
+			img  : '/carousel/0C9A8623.jpg'
+		},
+		{
+			name : 'Supra',
+			img  : '/carousel/20150705_105224.jpg'
+		},
+		{
+			name : 'Supra',
+			img  : '/carousel/20150704_165118.jpg'
+		}
+	],
 	cart      : [],
 	name      : '',
 	cartTotal : 0
@@ -147,6 +161,7 @@ app.post('/name', (req, res) => {
 
 app.get('/products/:make/:id', (req, res) => {
 	let make = req.params.make
+
 
 		make === 'toyota' ? (item = shop.toyota.find((item) => item.id === req.params.id)) :
 		(item = shop.nissan.find((item) => item.id === req.params.id))
