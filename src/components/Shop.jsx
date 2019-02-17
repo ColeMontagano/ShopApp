@@ -4,6 +4,7 @@ import axios from 'axios'
 import '../App.css'
 import Product from './Product'
 import ShopCarousel from './Carousel'
+import Cart from './Cart'
 import { Button, Container, Row, Col, Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle } from 'reactstrap'
 
 class Shop extends Component {
@@ -17,7 +18,6 @@ class Shop extends Component {
 
 	componentDidMount() {
 		axios.get('http://localhost:8080/').then(({ data }) => {
-			console.log(data)
 			this.setState({
 				shop      : data,
 				cart      : data.cart,
@@ -68,7 +68,6 @@ class Shop extends Component {
 	render() {
 		return (
 			<div>
-				{console.log(this.state)}
 				<Row id="shopNav">
 					<Col id="noMargin" xs="6">
 						<Link className="btn btn-dark wideButton" to={this.props.match.url + '/toyota'}>
@@ -122,6 +121,8 @@ class Shop extends Component {
 							cartTotal={this.state.cartTotal}
 							removeFromCart={this.removeFromCart}
 							loading={this.state.loading}
+							ItemCard={this.ItemCard}
+							props={this.props}
 						/>
 					)}
 				</Container>
@@ -201,43 +202,4 @@ const ItemCard = (props) => {
 		</div>
 	)
 }
-
-class Cart extends Component {
-	state = {
-		cartOpen : false
-	}
-
-	toggleCart = () => {
-		this.setState({
-			cartOpen : !this.state.cartOpen
-		})
-	}
-	render() {
-		return (
-			<div>
-				<Button color="dark" className="wideButton" onClick={this.toggleCart}>
-					{
-						this.state.cartOpen ? 'Close Cart' :
-						'Open Cart'}
-				</Button>
-
-				{this.state.cartOpen && (
-					<div>
-						<h1>Shopping Cart</h1>
-						{!this.props.loading &&
-							this.props.cart.map((item, i) => {
-								return (
-									<div key={i} style={{ display: 'inline-block' }}>
-										<ItemCard item={item.item} removeFromCart={this.props.removeFromCart} />
-									</div>
-								)
-							})}
-						{<h5>Cart Total: {this.props.cartTotal}</h5>}
-					</div>
-				)}
-			</div>
-		)
-	}
-}
-
 export default Shop
