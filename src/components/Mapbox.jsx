@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import MapGL, { Marker, NavigationControl } from 'react-map-gl'
+import mapboxAPIKey from '../config'
 
-const TOKEN = 'pk.eyJ1IjoiY21vbnQyMyIsImEiOiJjam90MjBsbXQwd3RtM3BwdDEzaGIzeHpsIn0.Ba2XglradkNUW4i7rOhUgw'
+const TOKEN = mapboxAPIKey
 
 class Mapbox extends Component {
 	constructor(props) {
