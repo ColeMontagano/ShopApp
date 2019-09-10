@@ -98,7 +98,7 @@ class AppNavbar extends Component {
 	render() {
 		return (
 			<div className="sticky-top">
-				<Navbar color="dark" dark expand="md">
+				<Navbar dark expand="md">
 					<Link className="navLinks" to="/">
 						Home
 					</Link>

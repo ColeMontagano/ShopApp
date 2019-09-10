@@ -123,16 +123,12 @@ shop = {
 	],
 	carousel  : [
 		{
-			name : 'Supra',
-			img  : '/carousel/0C9A8623.jpg'
+			name : 'JDM Import Motors',
+			img  : '/carousel/jdmimportmotors.png'
 		},
 		{
-			name : 'Supra',
-			img  : '/carousel/20150705_105224.jpg'
-		},
-		{
-			name : 'Supra',
-			img  : '/carousel/20150704_165118.jpg'
+			name : '2jz',
+			img  : '/carousel/2jz.png'
 		}
 	],
 	cart      : [],

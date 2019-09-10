@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import '../../src/App.css'
-import { Container } from 'reactstrap'
+import { Container, Button } from 'reactstrap'
 
 class Home extends Component {
 	render() {
@@ -19,8 +19,10 @@ class Home extends Component {
 						ullamcorper. <br /> - JDM Import Motors
 					</p>
 				</div>
-				<Link to={'/shop'} className="btn btn-dark wideButton">
+				<Link to={'/shop'}>
+					<Button outline>
 					Continue To The Store
+					</Button>
 				</Link>
 			</Container>
 		)

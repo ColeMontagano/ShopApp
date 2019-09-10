@@ -7,8 +7,8 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
-				<Header />
 				<AppNavbar />
+				<Header />
 				<Switch>
 					<Route path="/" exact component={Home} />
 					<Route path="/shop" component={Shop} />

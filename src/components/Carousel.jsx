@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import '../App.css'
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators } from 'reactstrap'
+import axios from 'axios';
 
 class ShopCarousel extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			activeIndex : 0
+			activeIndex : 0,
+			carouselItems : []
 		}
 		this.next = this.next.bind(this)
 		this.previous = this.previous.bind(this)
@@ -14,6 +16,15 @@ class ShopCarousel extends Component {
 		this.onExiting = this.onExiting.bind(this)
 		this.onExited = this.onExited.bind(this)
 	}
+
+	componentDidMount() {
+		axios.get('http://localhost:8080/').then(({ data }) => {
+			this.setState({
+				carouselItems  : data.carousel
+			})
+		})
+	}
+
 
 	onExiting() {
 		this.animating = true
@@ -27,7 +38,7 @@ class ShopCarousel extends Component {
 		if (this.animating) return
 		const nextIndex =
 
-				this.state.activeIndex === this.props.items.length - 1 ? 0 :
+				this.state.activeIndex ===	this.state.carouselItems.length - 1 ? 0 :
 				this.state.activeIndex + 1
 		this.setState({ activeIndex: nextIndex })
 	}
@@ -36,7 +47,7 @@ class ShopCarousel extends Component {
 		if (this.animating) return
 		const nextIndex =
 
-				this.state.activeIndex === 0 ? this.props.items.length - 1 :
+				this.state.activeIndex === 0 ? this.state.carouselItems.length - 1 :
 				this.state.activeIndex - 1
 		this.setState({ activeIndex: nextIndex })
 	}
@@ -46,9 +57,9 @@ class ShopCarousel extends Component {
 		this.setState({ activeIndex: newIndex })
 	}
 	render() {
-		if (this.props.items) {
+		if (this.state.carouselItems) {
 			const { activeIndex } = this.state
-			const slides = this.props.items.map((item, i) => {
+			const slides = this.state.carouselItems.map((item, i) => {
 				return (
 					<CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={i}>
 						<img src={item.img} alt={item.name} />
@@ -58,7 +69,7 @@ class ShopCarousel extends Component {
 			return (
 				<Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
 					<CarouselIndicators
-						items={this.props.items}
+						items={this.state.carouselItems}
 						activeIndex={activeIndex}
 						onClickHandler={this.goToIndex}
 					/>

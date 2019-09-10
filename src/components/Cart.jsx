@@ -17,7 +17,7 @@ class Cart extends Component {
 	render() {
 		return (
 			<div>
-				<Button color="dark" className="wideButton" onClick={this.toggleCart}>
+				<Button outline className="wideButton" onClick={this.toggleCart}>
 					{
 						this.state.cartOpen ? 'Close Cart' :
 						'Open Cart'}

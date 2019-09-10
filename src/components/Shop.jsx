@@ -3,7 +3,6 @@ import { Route, Switch, Link } from 'react-router-dom'
 import axios from 'axios'
 import '../App.css'
 import Product from './Product'
-import ShopCarousel from './Carousel'
 import Cart from './Cart'
 import { Button, Container, Row, Col, Card, CardImg, CardBody, CardTitle, CardText, CardSubtitle } from 'reactstrap'
 
@@ -12,8 +11,7 @@ class Shop extends Component {
 		shop      : [],
 		cart      : [],
 		loading   : true,
-		cartTotal : 0,
-		carousel  : []
+		cartTotal : 0
 	}
 
 	componentDidMount() {
@@ -22,8 +20,7 @@ class Shop extends Component {
 				shop      : data,
 				cart      : data.cart,
 				loading   : false,
-				cartTotal : data.cartTotal,
-				carousel  : data.carousel
+				cartTotal : data.cartTotal
 			})
 		})
 	}
@@ -70,21 +67,25 @@ class Shop extends Component {
 			<div>
 				<Row id="shopNav">
 					<Col id="noMargin" xs="6">
-						<Link className="btn btn-dark wideButton" to={this.props.match.url + '/toyota'}>
+						<Link to={this.props.match.url + '/toyota'}>
+							<Button outline className="wideButton">
 							Toyota Motors
+							</Button>
 						</Link>
 					</Col>
 					<Col id="noMargin" xs="6">
-						<Link className="btn btn-dark wideButton" to={this.props.match.url + '/nissan'}>
+						<Link to={this.props.match.url + '/nissan'}>
+							<Button outline className="btn wideButton">
 							Nissan Motors
+							</Button>
 						</Link>
 					</Col>
 				</Row>
 				{!this.state.loading &&
 				(this.props.location.pathname === '/shop' ||
 					this.props.location.pathname === '/shop/toyota' ||
-					this.props.location.pathname === '/shop/nissan') && <ShopCarousel items={this.state.carousel} />}
-				<Container className="noPadding center">
+					this.props.location.pathname === '/shop/nissan')}
+				<Container className="greyContainer noPadding center">
 					<Switch>
 						<Route
 							path={'/shop/:make/:id'}
