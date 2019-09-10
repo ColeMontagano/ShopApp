@@ -170,12 +170,12 @@ const ItemCard = (props) => {
 				<Link to={{ pathname: `/shop/${item.make}/${item.id}`, state: { item } }}>
 					<CardImg top src={item.img} alt="Motor" />
 				</Link>
-				<CardBody>
+				<CardBody id="grey">
 					<CardTitle>{item.name} </CardTitle>
 					<CardSubtitle>{item.description}</CardSubtitle>
 					<CardText>${item.price}</CardText>
 					<Button
-						color="dark"
+						outline
 						style={{
 							display :
 								item.inCart ? 'none' :
@@ -187,7 +187,7 @@ const ItemCard = (props) => {
 						Add To Cart
 					</Button>
 					<Button
-						color="dark"
+						outline
 						style={{
 							display :
 								item.inCart ? 'inline' :

@@ -1,9 +1,10 @@
 /* All */
 
-.body {
+.body  {
 	text-align: center;
 	background-color:rgb(219, 219, 219);
-	margin-bottom : 8%
+	margin-bottom : 8%;
+	color: rgb(94, 94, 94)
 }
 
 .greyContainer {
@@ -25,7 +26,13 @@ div.noMargin {
 
 .headerText {
 	padding: 2rem;
+	color: rgb(94, 94, 94)
 }
+
+td {
+	color: rgb(94, 94, 94)
+}
+
 
 /* Header */
 #jumbotron {
@@ -88,6 +95,10 @@ div.noMargin {
 	width: 18rem;
 	background-color: rgb(190, 190, 190);
 	margin: .5rem;
+}
+
+#grey {
+	background-color: rgb(219, 219, 219)
 }
 
 .card-img-top {

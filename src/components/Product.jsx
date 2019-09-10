@@ -20,9 +20,6 @@ class Product extends Component {
 	}
 
 	componentDidUpdate() {
-		// this.props.renderProps.location.state ? this.setState({
-		// 	item : this.props.renderProps.location.state.item
-		// }) :
 		axios
 			.get(
 				`http://localhost:8080/products/${this.props.renderProps.match.params.make}/${this.props.renderProps
@@ -40,10 +37,10 @@ class Product extends Component {
 			<Container>
 				<h1 className="headerText">{item.name}</h1>
 				<Row className="product">
-					<Col sm="12" md="6" className=" container-fluid">
+					<Col sm="12" md="8" lg="6" className=" container-fluid">
 						<img className="itemImage" src={item.img} alt={item.name + 'picture'} />
 					</Col>
-					<Col sm="12" md="6" className="specList">
+					<Col sm="12" md="4" lg="6" className="specList">
 						<h4>Specs:</h4>
 						<Table>
 							<tbody>
@@ -64,7 +61,7 @@ class Product extends Component {
 						<p>Price: ${item.price} </p>
 
 						<Button
-							color="dark"
+							outline
 							onClick={() => {
 								this.props.addToCart(
 									item.name,

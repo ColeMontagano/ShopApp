@@ -50,24 +50,12 @@ const ItemCard = (props) => {
 				<Link to={{ pathname: `/shop/${item.make}/${item.id}`, state: { item } }}>
 					<CardImg top src={item.img} alt="Motor" />
 				</Link>
-				<CardBody>
+				<CardBody id="grey">
 					<CardTitle>{item.name} </CardTitle>
 					<CardSubtitle>{item.description}</CardSubtitle>
 					<CardText>${item.price}</CardText>
 					<Button
-						color="dark"
-						style={{
-							display :
-								item.inCart ? 'none' :
-								'inline'
-						}}
-						onClick={() => {
-							props.addToCart(item.name, item.make, item.price, item.img, item.description, item.id)
-						}}>
-						Add To Cart
-					</Button>
-					<Button
-						color="dark"
+						outline
 						style={{
 							display :
 								item.inCart ? 'inline' :
