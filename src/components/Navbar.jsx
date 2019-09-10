@@ -97,7 +97,7 @@ class AppNavbar extends Component {
 
 	render() {
 		return (
-			<div className="sticky-top">
+			<div>
 				<Navbar dark expand="md">
 					<Link className="navLinks" to="/">
 						Home
